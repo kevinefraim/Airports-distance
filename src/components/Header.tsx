@@ -1,10 +1,10 @@
 import React from "react";
-import { Heading } from "@chakra-ui/react";
+import { Typography } from "@mui/material";
 
 const Header = () => {
   return (
     <div className="bg-gray-200 flex h-20 justify-center items-center">
-      <Heading>Airports - distance</Heading>
+      <Typography variant="h2">Airports - distance</Typography>
     </div>
   );
 };
