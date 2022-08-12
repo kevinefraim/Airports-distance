@@ -1,8 +1,13 @@
 import { Box, Button, Paper } from "@mui/material";
-import React from "react";
+import React, { useContext } from "react";
+import { AirportsContext } from "../context/AirportsContext";
+import { AirportsContextType } from "../types/context";
 import AirportsInput from "./AirportsInput";
 
 const FormContainer = () => {
+  const { airports } = useContext(AirportsContext) as AirportsContextType;
+  console.log(airports);
+
   return (
     <Paper
       sx={{
