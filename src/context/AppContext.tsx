@@ -9,10 +9,12 @@ type AppProviderProps = {
 };
 
 const AppProvider = ({ children }: AppProviderProps) => {
-  const [airports, setAirports] = useState<AirportType[] | null>(null);
+  const [airports, setAirports] = useState<AirportType[] | null | undefined>(
+    null
+  );
   const [loading, setLoading] = useState<boolean>(false);
-  const [origin, setOrigin] = useState<object | null>(null);
-  const [destiny, setDestiny] = useState<object | null>(null);
+  const [origin, setOrigin] = useState<AirportType | null | undefined>(null);
+  const [destiny, setDestiny] = useState<AirportType | null | undefined>(null);
 
   const getAccessToken = async () => {
     try {

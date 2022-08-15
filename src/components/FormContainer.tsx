@@ -14,9 +14,9 @@ const FormContainer = () => {
   const inputAiports = airports ? ArrayIntoAutocomplete(airports) : [];
 
   const handleChange = (name: string | null, destiny: boolean = false) => {
-    const airport = airports.find(
-      (airport: AirportType) => airport.name === name
-    );
+    const airport =
+      airports &&
+      airports.find((airport: AirportType) => airport.name === name);
     return destiny ? setDestiny(airport) : setOrigin(airport);
   };
   console.log(origin, destiny);

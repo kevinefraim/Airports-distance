@@ -1,11 +1,12 @@
 import { Dispatch, SetStateAction } from "react";
+import { AirportType } from "./airports";
 
 export type AppContextType = {
-  airports: any | null;
-  setAirports: Dispatch<SetStateAction<any | null>>;
+  airports: AirportType[] | null | undefined;
+  setAirports: Dispatch<SetStateAction<AirportType[] | null | undefined>>;
   loading: boolean;
-  origin: object | null;
-  setOrigin: Dispatch<SetStateAction<object | null>>;
-  destiny: object | null;
-  setDestiny: Dispatch<SetStateAction<object | null>>;
+  origin: AirportType | null | undefined;
+  setOrigin: Dispatch<SetStateAction<AirportType | null | undefined>>;
+  destiny: AirportType | null | undefined;
+  setDestiny: Dispatch<SetStateAction<AirportType | null | undefined>>;
 };
