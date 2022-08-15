@@ -1,12 +1,12 @@
-import { Box, Button, Paper } from "@mui/material";
+import { Autocomplete, Box, Button, Paper, TextField } from "@mui/material";
 import React, { useContext } from "react";
 import { AppContext } from "../context/AppContext";
-import { ContextType } from "../types/context";
+import { AppContextType } from "../types/context";
 import { ArrayIntoAutocomplete } from "../utils/helpers";
 import AirportsInput from "./AirportsInput";
 
 const FormContainer = () => {
-  const { airports } = useContext(AppContext) as ContextType;
+  const { airports } = useContext(AppContext) as AppContextType;
   console.log(airports);
 
   const inputAiports = airports && ArrayIntoAutocomplete(airports);
@@ -30,8 +30,22 @@ const FormContainer = () => {
           height: "fit-content",
         }}
       >
-        <AirportsInput label="Airport 1" airports={inputAiports} />
-        <AirportsInput label="Airport 2" airports={inputAiports} />
+        {/* <AirportsInput label="Airport 1" airports={inputAiports} />
+        <AirportsInput label="Airport 2" airports={inputAiports} /> */}
+        <Autocomplete
+          disablePortal
+          id="combo-box-demo"
+          options={inputAiports}
+          sx={{ width: 300 }}
+          renderInput={(params) => <TextField {...params} label="Airport 1" />}
+        />
+        <Autocomplete
+          disablePortal
+          id="combo-box-demo"
+          options={inputAiports}
+          sx={{ width: 300 }}
+          renderInput={(params) => <TextField {...params} label="Airport 2" />}
+        />
         <Button variant="contained" sx={{ height: "fit-content" }}>
           View Distance
         </Button>
