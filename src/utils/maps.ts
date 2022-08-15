@@ -2,18 +2,14 @@ import { AirportType } from "../types/airports";
 import { LocationType } from "../types/maps";
 
 export const initMap = () => {
-  const autocompleteOptions = {
-    types: ["airport"],
-    componentRestrictions: { country: "us" },
-  };
   const center = { lat: -25.344, lng: 131.031 };
-
-  let directionsDisplay: google.maps.DirectionsRenderer =
-    new google.maps.DirectionsRenderer();
-
   let map = new google.maps.Map(document.getElementById("map")!, {
     zoom: 8,
     center,
+  });
+  const directionsService = new google.maps.DirectionsService();
+  const directionsRenderer = new google.maps.DirectionsRenderer({
+    map: map,
   });
 
   const marker = new google.maps.Marker({
@@ -21,39 +17,59 @@ export const initMap = () => {
     map,
   });
 
-  directionsDisplay.setMap(map);
+  directionsRenderer.setMap(map);
+
+  const onChangeHandler = function () {
+    calcRoute(directionsService, directionsRenderer);
+  };
 
   let autocomplete1: google.maps.places.Autocomplete =
     new google.maps.places.Autocomplete(
       document.getElementById("input1") as HTMLInputElement,
-      autocompleteOptions
+      {
+        types: ["airport"],
+        componentRestrictions: { country: "us" },
+      }
     );
   let autocomplete2: google.maps.places.Autocomplete =
     new google.maps.places.Autocomplete(
       document.getElementById("input2") as HTMLInputElement,
-      autocompleteOptions
+      {
+        types: ["airport"],
+        componentRestrictions: { country: "us" },
+      }
     );
 
   google.maps.event.addListener(autocomplete1, "place_changed", () => {
     const place = autocomplete1.getPlace();
-    const { geometry } = place;
-    const { viewport, location } = geometry!;
+    console.log(place);
   });
   google.maps.event.addListener(autocomplete2, "place_changed", () => {
     const place = autocomplete2.getPlace();
     console.log(place);
   });
+  const btn = document.getElementById("btn") as HTMLButtonElement;
+  const resetBtn = document.getElementById("resetBtn") as HTMLButtonElement;
+  btn.addEventListener("click", (event) => {
+    event.preventDefault();
+    onChangeHandler();
+  });
+  resetBtn.addEventListener("click", (event) => {
+    event.preventDefault();
+    clearRoute(directionsRenderer);
+  });
 };
+
 const origin = document.getElementById("input1") as HTMLInputElement;
 const destination = document.getElementById("input2") as HTMLInputElement;
-let directionsDisplay: google.maps.DirectionsRenderer =
-  new google.maps.DirectionsRenderer();
-export const calcRoute = () => {
-  let directionsService: google.maps.DirectionsService =
-    new google.maps.DirectionsService();
+
+export const calcRoute = (
+  directionsService: google.maps.DirectionsService,
+  directionsRenderer: google.maps.DirectionsRenderer
+) => {
   const request = {
-    origin: origin.value,
-    destination: destination.value,
+    origin: origin.value ?? "",
+    destination: destination.value ?? "",
     travelMode: google.maps.TravelMode.DRIVING,
     unitSystem: google.maps.UnitSystem.METRIC,
   };
@@ -73,23 +89,21 @@ export const calcRoute = () => {
         ".<br />Duration: " +
         result.routes[0].legs[0].duration.text +
         ".</div>";
-
       document.getElementById("output")!.style.display = "block";
 
-      directionsDisplay.setDirections(result);
+      directionsRenderer.setDirections(result);
     } else {
-      directionsDisplay.setDirections({ routes: [], geocoded_waypoints: [] });
+      directionsRenderer.setDirections({ routes: [], geocoded_waypoints: [] });
       map.setCenter(center);
-
       alert("Can't find road! Please try again!");
-      clearRoute();
+      clearRoute(directionsRenderer);
     }
   });
 };
 
-export function clearRoute() {
+export function clearRoute(directionsRenderer: google.maps.DirectionsRenderer) {
   document.getElementById("output")!.style.display = "none";
   origin.value = "";
   destination.value = "";
-  directionsDisplay.setDirections({ routes: [], geocoded_waypoints: [] });
+  directionsRenderer.setDirections({ routes: [], geocoded_waypoints: [] });
 }

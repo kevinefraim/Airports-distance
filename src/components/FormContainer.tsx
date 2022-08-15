@@ -25,7 +25,7 @@ const FormContainer = () => {
   return (
     <Paper
       sx={{
-        width: "60%",
+        width: "90%",
         marginTop: "15px",
         height: "100%",
         padding: "20px",
@@ -68,12 +68,11 @@ const FormContainer = () => {
         /> */}
         <TextField type="text" id="input1" />
         <TextField type="text" id="input2" />
-        <Button
-          onClick={calcRoute}
-          variant="contained"
-          sx={{ height: "fit-content" }}
-        >
+        <Button id="btn" variant="contained" sx={{ height: "fit-content" }}>
           View Distance
+        </Button>
+        <Button id="resetBtn" variant="outlined" sx={{ height: "fit-content" }}>
+          Reset
         </Button>
       </Box>
       <Map />
