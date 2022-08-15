@@ -1,24 +1,37 @@
 import { Autocomplete, Box, Button, Paper, TextField } from "@mui/material";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
+import { AirportType } from "../types/airports";
 import { AppContextType } from "../types/context";
 import { ArrayIntoAutocomplete } from "../utils/helpers";
-import AirportsInput from "./AirportsInput";
+import Map from "./Map";
 
 const FormContainer = () => {
-  const { airports } = useContext(AppContext) as AppContextType;
-  console.log(airports);
+  const { airports, setOrigin, origin, destiny, setDestiny } = useContext(
+    AppContext
+  ) as AppContextType;
 
-  const inputAiports = airports && ArrayIntoAutocomplete(airports);
+  const inputAiports = airports ? ArrayIntoAutocomplete(airports) : [];
+
+  const handleChange = (name: string | null, destiny: boolean = false) => {
+    const airport = airports.find(
+      (airport: AirportType) => airport.name === name
+    );
+    return destiny ? setDestiny(airport) : setOrigin(airport);
+  };
+  console.log(origin, destiny);
 
   return (
     <Paper
       sx={{
         width: "60%",
-        height: "50%",
+        marginTop: "15px",
+        height: "100%",
         padding: "20px",
         display: "flex",
-        justifyContent: "center",
+        alignItems: "center",
+        flexDirection: "column",
+        gap: "20px",
       }}
       elevation={4}
     >
@@ -36,6 +49,9 @@ const FormContainer = () => {
           disablePortal
           id="combo-box-demo"
           options={inputAiports}
+          onChange={(event, value) => {
+            handleChange(value?.label);
+          }}
           sx={{ width: 300 }}
           renderInput={(params) => <TextField {...params} label="Airport 1" />}
         />
@@ -43,6 +59,9 @@ const FormContainer = () => {
           disablePortal
           id="combo-box-demo"
           options={inputAiports}
+          onChange={(event, value) => {
+            handleChange(value?.label, true);
+          }}
           sx={{ width: 300 }}
           renderInput={(params) => <TextField {...params} label="Airport 2" />}
         />
@@ -50,6 +69,7 @@ const FormContainer = () => {
           View Distance
         </Button>
       </Box>
+      <Map />
     </Paper>
   );
 };
