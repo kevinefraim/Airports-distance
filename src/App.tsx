@@ -1,13 +1,12 @@
-import React from "react";
 import Home from "./components/Home";
-import AirportsProvider from "./context/AirportsContext";
+import AppProvider from "./context/AppContext";
 
 function App() {
   return (
     <body className="h-[100vh]">
-      <AirportsProvider>
+      <AppProvider>
         <Home />
-      </AirportsProvider>
+      </AppProvider>
     </body>
   );
 }
