@@ -1,9 +1,11 @@
 import { Autocomplete, Box, Button, Paper, TextField } from "@mui/material";
+import { useEffect } from "react";
 import { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import { AirportType } from "../types/airports";
 import { AppContextType } from "../types/context";
 import { ArrayIntoAutocomplete } from "../utils/helpers";
+import { calcRoute } from "../utils/maps";
 import Map from "./Map";
 
 const FormContainer = () => {
@@ -19,7 +21,6 @@ const FormContainer = () => {
       airports.find((airport: AirportType) => airport.name === name);
     return destiny ? setDestiny(airport) : setOrigin(airport);
   };
-  console.log(origin, destiny);
 
   return (
     <Paper
@@ -45,7 +46,7 @@ const FormContainer = () => {
       >
         {/* <AirportsInput label="Airport 1" airports={inputAiports} />
         <AirportsInput label="Airport 2" airports={inputAiports} /> */}
-        <Autocomplete
+        {/* <Autocomplete
           disablePortal
           id="combo-box-demo"
           options={inputAiports}
@@ -64,12 +65,19 @@ const FormContainer = () => {
           }}
           sx={{ width: 300 }}
           renderInput={(params) => <TextField {...params} label="Airport 2" />}
-        />
-        <Button variant="contained" sx={{ height: "fit-content" }}>
+        /> */}
+        <TextField type="text" id="input1" />
+        <TextField type="text" id="input2" />
+        <Button
+          onClick={calcRoute}
+          variant="contained"
+          sx={{ height: "fit-content" }}
+        >
           View Distance
         </Button>
       </Box>
       <Map />
+      <div id="output"></div>
     </Paper>
   );
 };

@@ -10,7 +10,7 @@ const Map = () => {
   ) as AppContextType;
 
   useEffect(() => {
-    initMap(origin?.geoCode);
+    initMap();
   }, [origin, destiny]);
   return <div id="map" className="h-[100%] w-[100%]"></div>;
 };
