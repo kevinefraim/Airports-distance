@@ -2,18 +2,15 @@ import { Box, Button, Paper } from "@mui/material";
 import React, { useContext } from "react";
 import { AppContext } from "../context/AppContext";
 import { ContextType } from "../types/context";
+import { ArrayIntoAutocomplete } from "../utils/helpers";
 import AirportsInput from "./AirportsInput";
 
 const FormContainer = () => {
   const { airports } = useContext(AppContext) as ContextType;
-  const inputAiports =
-    airports &&
-    airports.map((airport: any) => {
-      return {
-        label: airport.name,
-        value: airport.code,
-      };
-    });
+  console.log(airports);
+
+  const inputAiports = airports && ArrayIntoAutocomplete(airports);
+
   return (
     <Paper
       sx={{

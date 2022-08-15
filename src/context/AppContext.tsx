@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { ReactNode, useEffect, useState } from "react";
+import { AirportType } from "../types/airports";
 
 export const AppContext = React.createContext({});
 
@@ -8,8 +9,7 @@ type AppProviderProps = {
 };
 
 const AppProvider = ({ children }: AppProviderProps) => {
-  // TODO: implement type based on API response
-  const [airports, setAirports] = useState<any | null>(null);
+  const [airports, setAirports] = useState<AirportType[] | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
 
   const getAccessToken = async () => {
