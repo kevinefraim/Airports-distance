@@ -9,11 +9,7 @@ import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
 } from "use-places-autocomplete";
-import { LatLngLiteral } from "../types/maps";
-
-type PlacesProps = {
-  setAirport: (position: LatLngLiteral) => void;
-};
+import { PlacesProps } from "../types/props";
 
 const Places = ({ setAirport }: PlacesProps) => {
   const {

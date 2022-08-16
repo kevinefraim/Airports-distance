@@ -1,19 +1,9 @@
 import { Button } from "@mui/material";
 import { Box } from "@mui/system";
-import { GoogleMap } from "@react-google-maps/api";
-import React, { Ref } from "react";
-import { DirectionsResult, LatLngLiteral } from "../types/maps";
+import { LatLngLiteral } from "../types/maps";
+import { AirportsFormProps } from "../types/props";
 import Distance from "./Distance";
 import Places from "./Places";
-
-type AirportsFormProps = {
-  setFirstAirport: (position: LatLngLiteral) => void;
-  setSecondAirport: (position: LatLngLiteral) => void;
-  mapRef: any;
-  fetchDirections: () => void;
-  handleReset: () => void;
-  directions: DirectionsResult | null;
-};
 
 const AirportsForm = ({
   setFirstAirport,

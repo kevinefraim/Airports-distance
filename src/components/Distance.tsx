@@ -1,8 +1,5 @@
+import { DistanceProps } from "../types/props";
 import { formatMiles } from "../utils/helpers";
-
-type DistanceProps = {
-  leg: google.maps.DirectionsLeg;
-};
 
 const Distance = ({ leg }: DistanceProps) => {
   if (!leg.distance) return null;
