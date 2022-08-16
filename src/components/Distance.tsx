@@ -1,5 +1,5 @@
-import { DistanceProps } from "../types/props";
-import { formatMiles } from "../utils/helpers";
+import { DistanceProps } from "types/props";
+import { formatMiles } from "utils/helpers";
 
 const Distance = ({ leg }: DistanceProps) => {
   if (!leg.distance) return null;
