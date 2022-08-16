@@ -10,7 +10,7 @@ const Distance = ({ leg }: DistanceProps) => {
 
   return (
     <div className="p-2 bg-gray-200 rounded-md w-[fit-content]">
-      <h5 className="font-bold text-2xl">Distance: {nauticalMiles} NMI.</h5>
+      <h5 className=" text-2xl font-mono">Distance: {nauticalMiles} NMI.</h5>
     </div>
   );
 };
