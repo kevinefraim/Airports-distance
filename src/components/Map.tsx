@@ -16,7 +16,7 @@ const Map = ({ firstAirport, secondAirport, mapRef, directions }: MapProps) => {
     }),
     []
   );
-  const onLoad = useCallback((map: any) => (mapRef.current = map), []);
+  const onLoad = useCallback((map: any) => (mapRef.current = map), [mapRef]);
   return (
     <GoogleMap
       zoom={10}
