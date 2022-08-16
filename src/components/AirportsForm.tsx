@@ -16,7 +16,7 @@ const AirportsForm = ({
   directions,
 }: AirportsFormProps) => {
   return (
-    <Box className="flex flex-col md:flex-row gap-8  w-full justify-center">
+    <Box className="flex flex-col md:flex-row md:items-center gap-8  w-full justify-center">
       <AirportInput
         setAirport={(position: LatLngLiteral) => {
           setFirstAirport(position);
@@ -32,12 +32,12 @@ const AirportsForm = ({
       <Button
         onClick={fetchDirections}
         variant="contained"
-        sx={{ height: "fit-content" }}
+        sx={{ height: "fit-content", backgroundColor: "green" }}
       >
         View Distance
       </Button>
       <Button
-        variant="outlined"
+        variant="contained"
         onClick={handleReset}
         sx={{ height: "fit-content", width: "fit-content" }}
       >

@@ -39,13 +39,13 @@ const AirportInput = ({ setAirport }: AirportInputProps) => {
   return (
     <Combobox onSelect={handleSelect}>
       <ComboboxInput
-        className="w-[100%] p-[0.5rem] shadow-md "
+        className="w-[100%] p-[0.5rem] shadow-lg border-2 border-gray-100 rounded-md"
         value={value}
         onChange={(e) => setValue(e.target.value)}
         placeholder="Search airports"
       />
       <ComboboxPopover>
-        <ComboboxList className="bg-slate-100">
+        <ComboboxList>
           {status === "OK" &&
             data.map(({ place_id, description }) => (
               <ComboboxOption
