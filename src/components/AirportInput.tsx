@@ -1,3 +1,7 @@
+/* Component that renders each input with US airports autocomplete */
+/* handleSelect function set the state passed as props with the selected airport location */
+/* handleClear function clears the input value */
+
 import { AirportInputProps } from "types/props";
 import usePlacesAutocomplete, {
   getGeocode,

@@ -1,3 +1,8 @@
+/* Main container component - contains map and form components */
+/* fetchDirections function sets the directions and pass it to the Map component */
+/* Using google.maps.TravelMode.DRIVING beeing the best options that I found,
+check this in: https://developers.google.com/maps/documentation/javascript/directions#TravelModes  */
+
 import { useEffect, useRef, useState } from "react";
 import { DirectionsResult, LatLngLiteral } from "types/maps";
 

@@ -1,3 +1,5 @@
+/* Circular loader component */
+
 import { Box, CircularProgress } from "@mui/material";
 
 const Loader = () => {

@@ -1,3 +1,6 @@
+/* Component that renders the form and handles its submit and reset*/
+/* Reset button will show after one submit*/
+
 import { useState } from "react";
 import { LatLngLiteral } from "types/maps";
 import { AirportsFormProps } from "types/props";

@@ -1,3 +1,5 @@
+/*Only App view */
+
 import MainContainer from "./MainContainer";
 
 const Home = () => {

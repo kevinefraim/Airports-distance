@@ -1,3 +1,5 @@
+/* Component props types file */
+
 import { DirectionsResult, LatLngLiteral } from "./maps";
 
 export type AirportsFormProps = {

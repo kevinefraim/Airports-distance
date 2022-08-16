@@ -1,3 +1,5 @@
+/* App header */
+
 const Header = () => {
   return (
     <header className="flex h-20 justify-center items-center">

@@ -1,3 +1,6 @@
+/* google maps component */
+/* Using directions prop in DIrectionsRenderer component to display the driving route between the two points */
+
 import { useCallback, useMemo } from "react";
 import { LatLngLiteral, MapOptions } from "types/maps";
 import { MapProps } from "types/props";

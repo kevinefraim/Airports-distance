@@ -1,3 +1,5 @@
+/* Component that renders the nautical miles distance between the two airports */
+
 import { DistanceProps } from "types/props";
 import { formatMiles } from "utils/helpers";
 
