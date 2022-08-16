@@ -16,14 +16,7 @@ const AirportsForm = ({
   directions,
 }: AirportsFormProps) => {
   return (
-    <Box
-      sx={{
-        display: "flex",
-        justifyContent: "center",
-        gap: "20px",
-        alignItems: "center",
-      }}
-    >
+    <Box className="flex flex-col md:flex-row gap-8  w-full justify-center">
       <Places
         setAirport={(position: LatLngLiteral) => {
           setFirstAirport(position);
