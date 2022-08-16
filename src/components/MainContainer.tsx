@@ -48,6 +48,7 @@ const MainContainer = () => {
         alignItems: "center",
         flexDirection: "column",
         gap: "20px",
+        backgroundColor: "transparent",
       }}
       elevation={8}
     >
