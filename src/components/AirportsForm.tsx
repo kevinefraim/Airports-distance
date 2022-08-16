@@ -18,13 +18,13 @@ const AirportsForm = ({
   return (
     <Box className="flex flex-col md:flex-row md:items-center gap-8  w-full justify-center">
       <AirportInput
-        setAirport={(position: LatLngLiteral) => {
+        setAirport={(position: LatLngLiteral): void => {
           setFirstAirport(position);
           mapRef.current?.panTo(position);
         }}
       />
       <AirportInput
-        setAirport={(position: LatLngLiteral) => {
+        setAirport={(position: LatLngLiteral): void => {
           setSecondAirport(position);
           mapRef.current?.panTo(position);
         }}

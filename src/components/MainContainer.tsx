@@ -15,7 +15,7 @@ const MainContainer = () => {
   const [directions, setDirections] = useState<DirectionsResult | null>(null);
   const mapRef = useRef<GoogleMap>();
 
-  const fetchDirections = () => {
+  const fetchDirections = (): void => {
     if (!firstAirport || !secondAirport) return;
     const service: google.maps.DirectionsService =
       new google.maps.DirectionsService();
@@ -30,7 +30,7 @@ const MainContainer = () => {
     );
   };
 
-  const handleReset = () => {
+  const handleReset = (): void => {
     window.location.reload();
   };
 

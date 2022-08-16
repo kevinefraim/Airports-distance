@@ -8,7 +8,7 @@ const Distance = ({ leg }: DistanceProps) => {
   const {
     distance: { text },
   } = leg;
-  const nauticalMiles = formatMiles(text);
+  const nauticalMiles: number = formatMiles(text);
 
   return (
     <Box className="p-2 bg-gray-200 rounded-md w-[fit-content]">

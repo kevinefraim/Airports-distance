@@ -27,7 +27,7 @@ const AirportInput = ({ setAirport }: AirportInputProps) => {
     },
   });
 
-  const handleSelect = async (value: string) => {
+  const handleSelect = async (value: string): Promise<void> => {
     setValue(value, false);
     clearSuggestions();
 

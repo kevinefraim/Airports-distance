@@ -5,7 +5,10 @@ import { MapProps } from "types/props";
 import { DirectionsRenderer, GoogleMap, Marker } from "@react-google-maps/api";
 
 const Map = ({ firstAirport, secondAirport, mapRef, directions }: MapProps) => {
-  const center = useMemo<LatLngLiteral>(() => ({ lat: 43, lng: -80 }), []);
+  const center = useMemo<LatLngLiteral>(
+    () => ({ lat: 40.74819, lng: -73.986726 }),
+    []
+  );
   const mapOptions = useMemo<MapOptions>(
     () => ({
       disableDefaultUI: true,
