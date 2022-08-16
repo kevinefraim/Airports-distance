@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { DirectionsResult, LatLngLiteral } from "types/maps";
 
 import { Box, Paper } from "@mui/material";
@@ -13,14 +13,16 @@ const MainContainer = () => {
     null
   );
   const [directions, setDirections] = useState<DirectionsResult | null>(null);
+  const [errors, setErrors] = useState<boolean>(false);
   const [isResetEnabled, setIsResetEnabled] = useState<boolean>(false);
   const mapRef = useRef<GoogleMap>();
 
-  // TODO: type event
-  const fetchDirections = (e: any): void => {
+  const fetchDirections = (e: React.ChangeEvent<HTMLFormElement>): void => {
     e.preventDefault();
-    // TODO: handle error
-    if (!firstAirport || !secondAirport) return;
+
+    if (!firstAirport || !secondAirport) return setErrors(true);
+    if (!firstAirport) return setErrors(true);
+    if (!secondAirport) return setErrors(true);
 
     const service: google.maps.DirectionsService =
       new google.maps.DirectionsService();
@@ -37,6 +39,12 @@ const MainContainer = () => {
     setIsResetEnabled(true);
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      setErrors(false);
+    }, 6000);
+  }, [errors]);
+
   const handleReset = (): void => {
     window.location.reload();
   };
@@ -49,6 +57,7 @@ const MainContainer = () => {
       }}
       elevation={8}
     >
+      {errors && <span className="text-red-600">Choose a valid Airport</span>}
       <Box className="flex flex-col gap-8 h-[70vh] w-full justify-center">
         <AirportsForm
           setFirstAirport={setFirstAirport}
