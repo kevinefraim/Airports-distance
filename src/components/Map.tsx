@@ -13,7 +13,6 @@ const Map = () => {
     null
   );
   const [directions, setDirections] = useState<DirectionsResult | null>(null);
-  const [reset, setReset] = useState<boolean>(false);
   const mapRef = useRef<GoogleMap>();
   const center = useMemo<LatLngLiteral>(() => ({ lat: 43, lng: -80 }), []);
   const options = useMemo<MapOptions>(
@@ -40,14 +39,14 @@ const Map = () => {
   };
 
   const handleReset = () => {
-    setReset(true);
     setFirstAirport(null);
     setSecondAirport(null);
     setDirections(null);
+    window.location.reload();
   };
 
   return (
-    <Box className="flex flex-col gap-8 h-[100%] w-full justify-center">
+    <Box className="flex flex-col gap-8 h-[100vh] w-full justify-center">
       <Box
         sx={{
           display: "flex",
@@ -57,14 +56,12 @@ const Map = () => {
         }}
       >
         <Places
-          reset={reset}
           setAirport={(position: LatLngLiteral) => {
             setFirstAirport(position);
             mapRef.current?.panTo(position);
           }}
         />
         <Places
-          reset={reset}
           setAirport={(position: LatLngLiteral) => {
             setSecondAirport(position);
             mapRef.current?.panTo(position);

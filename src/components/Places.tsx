@@ -5,7 +5,6 @@ import {
   ComboboxOption,
   ComboboxPopover,
 } from "@reach/combobox";
-import { useEffect } from "react";
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
@@ -14,10 +13,9 @@ import { LatLngLiteral } from "../types/maps";
 
 type PlacesProps = {
   setAirport: (position: LatLngLiteral) => void;
-  reset: boolean;
 };
 
-const Places = ({ setAirport, reset }: PlacesProps) => {
+const Places = ({ setAirport }: PlacesProps) => {
   const {
     value,
     setValue,
@@ -40,9 +38,6 @@ const Places = ({ setAirport, reset }: PlacesProps) => {
     const { lat, lng } = getLatLng(results[0]);
     setAirport({ lat, lng });
   };
-  useEffect(() => {
-    setValue("");
-  }, [reset]);
 
   return (
     <Combobox onSelect={handleSelect}>

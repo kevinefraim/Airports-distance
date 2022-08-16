@@ -1,5 +1,5 @@
-import { Box, Paper } from "@mui/material";
 import Map from "./Map";
+import { Paper } from "@mui/material";
 
 const FormContainer = () => {
   return (
@@ -16,14 +16,6 @@ const FormContainer = () => {
       }}
       elevation={4}
     >
-      <Box
-        sx={{
-          display: "flex",
-          gap: "3rem",
-          alignItems: "center",
-          height: "fit-content",
-        }}
-      ></Box>
       <Map />
     </Paper>
   );
