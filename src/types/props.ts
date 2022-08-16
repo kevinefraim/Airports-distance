@@ -3,13 +3,11 @@
 import { DirectionsResult, LatLngLiteral } from "./maps";
 
 export type AirportsFormProps = {
-  setFirstAirport: (position: LatLngLiteral) => void;
-  setSecondAirport: (position: LatLngLiteral) => void;
+  setFirstAirport: (position: LatLngLiteral | null) => void;
+  setSecondAirport: (position: LatLngLiteral | null) => void;
   mapRef: any;
   fetchDirections: (e: React.ChangeEvent<HTMLFormElement>) => void;
-  handleReset: () => void;
   directions: DirectionsResult | null;
-  isResetEnabled: boolean;
 };
 
 export type DistanceProps = {

@@ -19,7 +19,6 @@ const MainContainer = () => {
   );
   const [directions, setDirections] = useState<DirectionsResult | null>(null);
   const [errors, setErrors] = useState<boolean>(false);
-  const [isResetEnabled, setIsResetEnabled] = useState<boolean>(false);
   const mapRef = useRef<GoogleMap>();
 
   const fetchDirections = (e: React.ChangeEvent<HTMLFormElement>): void => {
@@ -41,18 +40,15 @@ const MainContainer = () => {
       request,
       (res, status) => status === "OK" && setDirections(res)
     );
-    setIsResetEnabled(true);
   };
 
   useEffect(() => {
-    setTimeout(() => {
-      setErrors(false);
-    }, 5000);
+    if (errors) {
+      setTimeout(() => {
+        setErrors(false);
+      }, 5000);
+    }
   }, [errors]);
-
-  const handleReset = (): void => {
-    window.location.reload();
-  };
 
   return (
     <Paper
@@ -73,9 +69,7 @@ const MainContainer = () => {
           setSecondAirport={setSecondAirport}
           mapRef={mapRef}
           fetchDirections={fetchDirections}
-          handleReset={handleReset}
           directions={directions}
-          isResetEnabled={isResetEnabled}
         />
         <Box className="h-[100%] w-[100%] flex justify-center">
           <Map

@@ -15,9 +15,7 @@ const AirportsForm = ({
   setSecondAirport,
   mapRef,
   fetchDirections,
-  handleReset,
   directions,
-  isResetEnabled,
 }: AirportsFormProps) => {
   return (
     <form
@@ -45,16 +43,6 @@ const AirportsForm = ({
       >
         View Distance
       </Button>
-
-      {isResetEnabled && (
-        <Button
-          variant="contained"
-          onClick={handleReset}
-          className="h-fit w-fit"
-        >
-          Reset
-        </Button>
-      )}
 
       {directions && <Distance leg={directions.routes[0].legs[0]} />}
     </form>
