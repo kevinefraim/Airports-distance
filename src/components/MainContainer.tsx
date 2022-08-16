@@ -47,7 +47,7 @@ const MainContainer = () => {
   useEffect(() => {
     setTimeout(() => {
       setErrors(false);
-    }, 6000);
+    }, 5000);
   }, [errors]);
 
   const handleReset = (): void => {
@@ -62,7 +62,11 @@ const MainContainer = () => {
       }}
       elevation={8}
     >
-      {errors && <span className="text-red-600">Choose a valid Airport</span>}
+      {errors && (
+        <span className="text-white bg-red-500 p-1 rounded-md">
+          Choose a valid Airport
+        </span>
+      )}
       <Box className="flex flex-col gap-8 h-[70vh] w-full justify-center">
         <AirportsForm
           setFirstAirport={setFirstAirport}
