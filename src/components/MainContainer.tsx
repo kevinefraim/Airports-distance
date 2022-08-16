@@ -19,17 +19,14 @@ const MainContainer = () => {
     if (!firstAirport || !secondAirport) return;
     const service: google.maps.DirectionsService =
       new google.maps.DirectionsService();
+    const request: google.maps.DirectionsRequest = {
+      origin: firstAirport,
+      destination: secondAirport,
+      travelMode: google.maps.TravelMode.DRIVING,
+    };
     service.route(
-      {
-        origin: firstAirport,
-        destination: secondAirport,
-        travelMode: google.maps.TravelMode.DRIVING,
-      },
-      (result, status) => {
-        if (status === "OK" && result) {
-          setDirections(result);
-        }
-      }
+      request,
+      (res, status) => status === "OK" && setDirections(res)
     );
   };
 
@@ -39,15 +36,8 @@ const MainContainer = () => {
 
   return (
     <Paper
+      className="w-[90%] mt-4 h-[100%] p-5 flex items-center flex-col gap-5 bg-transparent"
       sx={{
-        width: "90%",
-        marginTop: "15px",
-        height: "100%",
-        padding: "20px",
-        display: "flex",
-        alignItems: "center",
-        flexDirection: "column",
-        gap: "20px",
         backgroundColor: "transparent",
       }}
       elevation={8}

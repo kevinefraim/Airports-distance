@@ -6,10 +6,9 @@ import { DirectionsRenderer, GoogleMap, Marker } from "@react-google-maps/api";
 
 const Map = ({ firstAirport, secondAirport, mapRef, directions }: MapProps) => {
   const center = useMemo<LatLngLiteral>(() => ({ lat: 43, lng: -80 }), []);
-  const options = useMemo<MapOptions>(
+  const mapOptions = useMemo<MapOptions>(
     () => ({
       disableDefaultUI: true,
-      clickableIcons: false,
       mapId: "d539158592125f62",
     }),
     []
@@ -20,7 +19,7 @@ const Map = ({ firstAirport, secondAirport, mapRef, directions }: MapProps) => {
       zoom={10}
       center={center}
       mapContainerClassName="h-[100%] w-[100%]"
-      options={options}
+      options={mapOptions}
       onLoad={onLoad}
     >
       {directions && (

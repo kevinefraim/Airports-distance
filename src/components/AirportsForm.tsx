@@ -33,15 +33,11 @@ const AirportsForm = ({
         onClick={fetchDirections}
         variant="contained"
         color="success"
-        sx={{ height: "fit-content" }}
+        className="h-fit"
       >
         View Distance
       </Button>
-      <Button
-        variant="contained"
-        onClick={handleReset}
-        sx={{ height: "fit-content", width: "fit-content" }}
-      >
+      <Button variant="contained" onClick={handleReset} className="h-fit w-fit">
         Reset
       </Button>
       {directions && <Distance leg={directions.routes[0].legs[0]} />}
