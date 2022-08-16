@@ -4,7 +4,7 @@ export type AirportsFormProps = {
   setFirstAirport: (position: LatLngLiteral) => void;
   setSecondAirport: (position: LatLngLiteral) => void;
   mapRef: any;
-  fetchDirections: () => void;
+  fetchDirections: (e: any) => void;
   handleReset: () => void;
   directions: DirectionsResult | null;
   isResetEnabled: boolean;

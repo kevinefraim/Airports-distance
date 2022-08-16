@@ -18,7 +18,10 @@ const AirportsForm = ({
   isResetEnabled,
 }: AirportsFormProps) => {
   return (
-    <Box className="flex flex-col md:flex-row md:items-center gap-8  w-full justify-center">
+    <form
+      onSubmit={fetchDirections}
+      className="flex flex-col md:flex-row md:items-center gap-8  w-full justify-center"
+    >
       <AirportInput
         setAirport={(position: LatLngLiteral): void => {
           setFirstAirport(position);
@@ -33,8 +36,8 @@ const AirportsForm = ({
       />
 
       <Button
-        onClick={fetchDirections}
         variant="contained"
+        type="submit"
         color="success"
         className="h-fit"
       >
@@ -52,7 +55,7 @@ const AirportsForm = ({
       )}
 
       {directions && <Distance leg={directions.routes[0].legs[0]} />}
-    </Box>
+    </form>
   );
 };
 

@@ -1,3 +1,5 @@
+// TODO: comment function
+
 export const formatMiles = (text: string) => {
   const miles = text.split(" ")[0];
 

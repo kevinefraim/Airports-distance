@@ -16,7 +16,10 @@ const MainContainer = () => {
   const [isResetEnabled, setIsResetEnabled] = useState<boolean>(false);
   const mapRef = useRef<GoogleMap>();
 
-  const fetchDirections = (): void => {
+  // TODO: type event
+  const fetchDirections = (e: any): void => {
+    e.preventDefault();
+    // TODO: handle error
     if (!firstAirport || !secondAirport) return;
 
     const service: google.maps.DirectionsService =
