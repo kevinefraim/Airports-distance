@@ -11,7 +11,7 @@ const Distance = ({ leg }: DistanceProps) => {
   } = leg;
   const nauticalMiles = formatMiles(text);
 
-  return <h5 className="font-bold">Distance: {nauticalMiles} NMI</h5>;
+  return <h5 className="font-bold text-lg">Distance: {nauticalMiles} NMI</h5>;
 };
 
 export default Distance;

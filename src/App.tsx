@@ -13,9 +13,7 @@ function App() {
   return (
     <>
       <Header />
-      <main className="h-[100vh]">
-        <Home />
-      </main>
+      <Home />
     </>
   );
 }
