@@ -4,6 +4,9 @@ import usePlacesAutocomplete, {
   getLatLng
 } from "use-places-autocomplete";
 
+import ClearIcon from "@mui/icons-material/Clear";
+import { IconButton } from "@mui/material";
+import { Box } from "@mui/system";
 import {
   Combobox,
   ComboboxInput,
@@ -35,15 +38,29 @@ const AirportInput = ({ setAirport }: AirportInputProps) => {
     const { lat, lng } = getLatLng(results[0]);
     setAirport({ lat, lng });
   };
+  const handleClear = (): void => {
+    setValue("", false);
+    clearSuggestions();
+  };
 
   return (
     <Combobox onSelect={handleSelect}>
-      <ComboboxInput
-        className="w-[100%] p-[0.5rem] shadow-lg border-2 border-gray-100 rounded-md"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-        placeholder="Search airports"
-      />
+      <Box className="flex items-center gap-2">
+        <ComboboxInput
+          className="w-[100%] p-[0.5rem] shadow-lg border-2 border-gray-100 rounded-md"
+          value={value}
+          onChange={({ target }) => setValue(target.value)}
+          placeholder="Search airports"
+        />
+        <IconButton
+          onClick={handleClear}
+          className="bg-red-600 rounded-full text-white"
+          color="error"
+        >
+          <ClearIcon />
+        </IconButton>
+      </Box>
+
       <ComboboxPopover>
         <ComboboxList>
           {status === "OK" &&
