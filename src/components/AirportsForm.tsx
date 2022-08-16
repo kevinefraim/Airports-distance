@@ -15,10 +15,8 @@ const AirportsForm = ({
   fetchDirections,
   handleReset,
   directions,
-  isSubmitDisabled,
+  isResetEnabled,
 }: AirportsFormProps) => {
-  console.log(isSubmitDisabled);
-
   return (
     <Box className="flex flex-col md:flex-row md:items-center gap-8  w-full justify-center">
       <AirportInput
@@ -33,16 +31,17 @@ const AirportsForm = ({
           mapRef.current?.panTo(position);
         }}
       />
-      {!isSubmitDisabled ? (
-        <Button
-          onClick={fetchDirections}
-          variant="contained"
-          color="success"
-          className="h-fit"
-        >
-          View Distance
-        </Button>
-      ) : (
+
+      <Button
+        onClick={fetchDirections}
+        variant="contained"
+        color="success"
+        className="h-fit"
+      >
+        View Distance
+      </Button>
+
+      {isResetEnabled && (
         <Button
           variant="contained"
           onClick={handleReset}

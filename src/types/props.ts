@@ -7,7 +7,7 @@ export type AirportsFormProps = {
   fetchDirections: () => void;
   handleReset: () => void;
   directions: DirectionsResult | null;
-  isSubmitDisabled: boolean;
+  isResetEnabled: boolean;
 };
 
 export type DistanceProps = {

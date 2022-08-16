@@ -13,11 +13,12 @@ const MainContainer = () => {
     null
   );
   const [directions, setDirections] = useState<DirectionsResult | null>(null);
-  const [isSubmitDisabled, setIsSubmitDisabled] = useState<boolean>(false);
+  const [isResetEnabled, setIsResetEnabled] = useState<boolean>(false);
   const mapRef = useRef<GoogleMap>();
 
   const fetchDirections = (): void => {
     if (!firstAirport || !secondAirport) return;
+
     const service: google.maps.DirectionsService =
       new google.maps.DirectionsService();
     const request: google.maps.DirectionsRequest = {
@@ -25,11 +26,12 @@ const MainContainer = () => {
       destination: secondAirport,
       travelMode: google.maps.TravelMode.DRIVING,
     };
+
     service.route(
       request,
       (res, status) => status === "OK" && setDirections(res)
     );
-    setIsSubmitDisabled(true);
+    setIsResetEnabled(true);
   };
 
   const handleReset = (): void => {
@@ -52,7 +54,7 @@ const MainContainer = () => {
           fetchDirections={fetchDirections}
           handleReset={handleReset}
           directions={directions}
-          isSubmitDisabled={isSubmitDisabled}
+          isResetEnabled={isResetEnabled}
         />
         <Box className="h-[100%] w-[100%] flex justify-center">
           <Map
