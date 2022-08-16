@@ -1,6 +1,4 @@
-import { Autocomplete, Box, Button, Paper, TextField } from "@mui/material";
-import { useEffect } from "react";
-import { useContext } from "react";
+import { Box, Paper } from "@mui/material";
 import Map from "./Map";
 
 const FormContainer = () => {

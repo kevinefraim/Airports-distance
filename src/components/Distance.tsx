@@ -5,11 +5,16 @@ type DistanceProps = {
 };
 
 const Distance = ({ leg }: DistanceProps) => {
-  if (!leg.distance || !leg.duration) return null;
-  console.log(leg);
+  if (!leg.distance) return null;
+  const {
+    distance: { text },
+  } = leg;
+  const miles = text.split(" ")[0];
 
   const nauticalMiles = Math.round(
-    +leg.distance.text.split(" ")[0].replace(",", ".") * 0.868976
+    miles.includes(".")
+      ? +miles.replace(".", "") * 0.868976
+      : +miles.replace(",", ".") * 0.868976
   );
 
   return <div>Distance: {nauticalMiles} NMI</div>;

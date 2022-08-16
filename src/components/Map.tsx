@@ -1,6 +1,5 @@
 import { useLoadScript } from "@react-google-maps/api";
 import { useContext, useEffect, useMemo, useState } from "react";
-import Loader from "./Loader";
 import { GoogleMap, Marker, DirectionsRenderer } from "@react-google-maps/api";
 import { useRef } from "react";
 import { DirectionsResult, LatLngLiteral, MapOptions } from "../types/maps";
@@ -10,9 +9,12 @@ import { Box, Button } from "@mui/material";
 import Distance from "./Distance";
 
 const Map = () => {
-  const [firstAirport, setFirstAirport] = useState<LatLngLiteral>();
-  const [secondAirport, setSecondAirport] = useState<LatLngLiteral>();
-  const [directions, setDirections] = useState<DirectionsResult>();
+  const [firstAirport, setFirstAirport] = useState<LatLngLiteral | null>(null);
+  const [secondAirport, setSecondAirport] = useState<LatLngLiteral | null>(
+    null
+  );
+  const [directions, setDirections] = useState<DirectionsResult | null>(null);
+  const [reset, setReset] = useState<boolean>(false);
   const mapRef = useRef<GoogleMap>();
   const center = useMemo<LatLngLiteral>(() => ({ lat: 43, lng: -80 }), []);
   const options = useMemo<MapOptions>(
@@ -39,9 +41,10 @@ const Map = () => {
   };
 
   const handleReset = () => {
-    setFirstAirport(undefined);
-    setSecondAirport(undefined);
-    setDirections(undefined);
+    setReset(true);
+    setFirstAirport(null);
+    setSecondAirport(null);
+    setDirections(null);
   };
 
   return (
@@ -55,12 +58,14 @@ const Map = () => {
         }}
       >
         <Places
+          reset={reset}
           setAirport={(position: LatLngLiteral) => {
             setFirstAirport(position);
             mapRef.current?.panTo(position);
           }}
         />
         <Places
+          reset={reset}
           setAirport={(position: LatLngLiteral) => {
             setSecondAirport(position);
             mapRef.current?.panTo(position);
@@ -78,7 +83,7 @@ const Map = () => {
       </Box>
       <Box className="h-[100%] w-[100%] flex justify-center">
         <GoogleMap
-          zoom={8}
+          zoom={10}
           center={center}
           mapContainerClassName="h-[100%] w-[100%]"
           options={options}
@@ -92,6 +97,7 @@ const Map = () => {
               }}
             />
           )}
+          {!firstAirport && !secondAirport && <Marker position={center} />}
           {firstAirport && <Marker position={firstAirport} />}
           {secondAirport && <Marker position={secondAirport} />}
         </GoogleMap>

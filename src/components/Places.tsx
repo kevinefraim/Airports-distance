@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import {
   Combobox,
   ComboboxInput,
@@ -5,7 +6,7 @@ import {
   ComboboxOption,
   ComboboxPopover,
 } from "@reach/combobox";
-import React from "react";
+import React, { useEffect } from "react";
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
@@ -14,16 +15,24 @@ import { LatLngLiteral } from "../types/maps";
 
 type PlacesProps = {
   setAirport: (position: LatLngLiteral) => void;
+  reset: boolean;
 };
 
-const Places = ({ setAirport }: PlacesProps) => {
+const Places = ({ setAirport, reset }: PlacesProps) => {
   const {
     ready,
     value,
     setValue,
     suggestions: { status, data },
     clearSuggestions,
-  } = usePlacesAutocomplete();
+  } = usePlacesAutocomplete({
+    requestOptions: {
+      types: ["airport"],
+      componentRestrictions: {
+        country: "us",
+      },
+    },
+  });
 
   const handleSelect = async (value: string) => {
     setValue(value, false);
@@ -33,6 +42,9 @@ const Places = ({ setAirport }: PlacesProps) => {
     const { lat, lng } = getLatLng(results[0]);
     setAirport({ lat, lng });
   };
+  useEffect(() => {
+    setValue("");
+  }, [reset]);
 
   return (
     <Combobox onSelect={handleSelect}>
