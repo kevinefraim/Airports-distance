@@ -1,7 +1,6 @@
-import React, { useContext } from "react";
+import React from "react";
 import { Box } from "@mui/material";
 import FormContainer from "./FormContainer";
-import Header from "./Header";
 
 const Home = () => {
   return (

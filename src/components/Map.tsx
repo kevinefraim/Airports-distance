@@ -1,5 +1,4 @@
-import { useLoadScript } from "@react-google-maps/api";
-import { useContext, useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { GoogleMap, Marker, DirectionsRenderer } from "@react-google-maps/api";
 import { useRef } from "react";
 import { DirectionsResult, LatLngLiteral, MapOptions } from "../types/maps";

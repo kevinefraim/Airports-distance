@@ -1,4 +1,3 @@
-import { Button } from "@mui/material";
 import {
   Combobox,
   ComboboxInput,
@@ -6,7 +5,7 @@ import {
   ComboboxOption,
   ComboboxPopover,
 } from "@reach/combobox";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
@@ -20,7 +19,6 @@ type PlacesProps = {
 
 const Places = ({ setAirport, reset }: PlacesProps) => {
   const {
-    ready,
     value,
     setValue,
     suggestions: { status, data },
