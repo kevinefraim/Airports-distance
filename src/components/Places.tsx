@@ -1,14 +1,16 @@
+import usePlacesAutocomplete, {
+  getGeocode,
+  getLatLng
+} from "use-places-autocomplete";
+
 import {
   Combobox,
   ComboboxInput,
   ComboboxList,
   ComboboxOption,
-  ComboboxPopover,
+  ComboboxPopover
 } from "@reach/combobox";
-import usePlacesAutocomplete, {
-  getGeocode,
-  getLatLng,
-} from "use-places-autocomplete";
+
 import { PlacesProps } from "../types/props";
 
 const Places = ({ setAirport }: PlacesProps) => {

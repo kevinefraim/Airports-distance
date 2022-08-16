@@ -1,8 +1,9 @@
-import { useState } from "react";
-import { GoogleMap } from "@react-google-maps/api";
-import { useRef } from "react";
-import { DirectionsResult, LatLngLiteral } from "../types/maps";
+import { useRef, useState } from "react";
+
 import { Box, Paper } from "@mui/material";
+import { GoogleMap } from "@react-google-maps/api";
+
+import { DirectionsResult, LatLngLiteral } from "../types/maps";
 import AirportsForm from "./AirportsForm";
 import Map from "./Map";
 
