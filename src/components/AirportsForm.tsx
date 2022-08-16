@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { LatLngLiteral } from "types/maps";
 import { AirportsFormProps } from "types/props";
 
@@ -14,7 +15,10 @@ const AirportsForm = ({
   fetchDirections,
   handleReset,
   directions,
+  isSubmitDisabled,
 }: AirportsFormProps) => {
+  console.log(isSubmitDisabled);
+
   return (
     <Box className="flex flex-col md:flex-row md:items-center gap-8  w-full justify-center">
       <AirportInput
@@ -29,17 +33,25 @@ const AirportsForm = ({
           mapRef.current?.panTo(position);
         }}
       />
-      <Button
-        onClick={fetchDirections}
-        variant="contained"
-        color="success"
-        className="h-fit"
-      >
-        View Distance
-      </Button>
-      <Button variant="contained" onClick={handleReset} className="h-fit w-fit">
-        Reset
-      </Button>
+      {!isSubmitDisabled ? (
+        <Button
+          onClick={fetchDirections}
+          variant="contained"
+          color="success"
+          className="h-fit"
+        >
+          View Distance
+        </Button>
+      ) : (
+        <Button
+          variant="contained"
+          onClick={handleReset}
+          className="h-fit w-fit"
+        >
+          Reset
+        </Button>
+      )}
+
       {directions && <Distance leg={directions.routes[0].legs[0]} />}
     </Box>
   );
