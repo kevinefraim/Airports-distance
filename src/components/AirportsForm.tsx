@@ -32,7 +32,8 @@ const AirportsForm = ({
       <Button
         onClick={fetchDirections}
         variant="contained"
-        sx={{ height: "fit-content", backgroundColor: "green" }}
+        color="success"
+        sx={{ height: "fit-content" }}
       >
         View Distance
       </Button>
