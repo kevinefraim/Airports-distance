@@ -11,8 +11,8 @@ const Distance = ({ leg }: DistanceProps) => {
   const nauticalMiles: number = formatMiles(text);
 
   return (
-    <Box className="p-2 bg-gray-200 rounded-md w-[fit-content]">
-      <Typography variant="h5" className=" text-2xl font-mono">
+    <Box className="p-2 bg-slate-100 shadow-lg rounded-md w-[fit-content]">
+      <Typography variant="h6" className="font-mono">
         Distance: {nauticalMiles} NMI.
       </Typography>
     </Box>

@@ -19,7 +19,7 @@ const Map = ({ firstAirport, secondAirport, mapRef, directions }: MapProps) => {
   const onLoad = useCallback((map: any) => (mapRef.current = map), [mapRef]);
   return (
     <GoogleMap
-      zoom={10}
+      zoom={12}
       center={center}
       mapContainerClassName="h-[100%] w-[100%]"
       options={mapOptions}
