@@ -5,8 +5,7 @@ import usePlacesAutocomplete, {
 } from "use-places-autocomplete";
 
 import ClearIcon from "@mui/icons-material/Clear";
-import { IconButton } from "@mui/material";
-import { Box } from "@mui/system";
+import { Box, IconButton } from "@mui/material";
 import {
   Combobox,
   ComboboxInput,
@@ -45,7 +44,7 @@ const AirportInput = ({ setAirport }: AirportInputProps) => {
 
   return (
     <Combobox onSelect={handleSelect}>
-      <Box className="flex items-center gap-2">
+      <div className="flex items-center gap-2">
         <ComboboxInput
           className="w-[100%] p-[0.5rem] shadow-lg border-2 border-gray-100 rounded-md"
           value={value}
@@ -59,7 +58,7 @@ const AirportInput = ({ setAirport }: AirportInputProps) => {
         >
           <ClearIcon />
         </IconButton>
-      </Box>
+      </div>
 
       <ComboboxPopover>
         <ComboboxList>

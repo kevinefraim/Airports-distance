@@ -3,7 +3,6 @@ import { LatLngLiteral } from "types/maps";
 import { AirportsFormProps } from "types/props";
 
 import { Button } from "@mui/material";
-import { Box } from "@mui/system";
 
 import AirportInput from "./AirportInput";
 import Distance from "./Distance";
