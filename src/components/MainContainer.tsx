@@ -51,7 +51,7 @@ const MainContainer = () => {
       }}
       elevation={8}
     >
-      <Box className="flex flex-col gap-8 h-[80vh] w-full justify-center">
+      <Box className="flex flex-col gap-8 h-[70vh] w-full justify-center">
         <AirportsForm
           setFirstAirport={setFirstAirport}
           setSecondAirport={setSecondAirport}
