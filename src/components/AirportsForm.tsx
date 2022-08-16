@@ -4,8 +4,8 @@ import { AirportsFormProps } from "types/props";
 import { Button } from "@mui/material";
 import { Box } from "@mui/system";
 
+import AirportInput from "./AirportInput";
 import Distance from "./Distance";
-import Places from "./Places";
 
 const AirportsForm = ({
   setFirstAirport,
@@ -17,13 +17,13 @@ const AirportsForm = ({
 }: AirportsFormProps) => {
   return (
     <Box className="flex flex-col md:flex-row gap-8  w-full justify-center">
-      <Places
+      <AirportInput
         setAirport={(position: LatLngLiteral) => {
           setFirstAirport(position);
           mapRef.current?.panTo(position);
         }}
       />
-      <Places
+      <AirportInput
         setAirport={(position: LatLngLiteral) => {
           setSecondAirport(position);
           mapRef.current?.panTo(position);

@@ -20,6 +20,6 @@ export type MapProps = {
   directions: DirectionsResult | null;
 };
 
-export type PlacesProps = {
+export type AirportInputProps = {
   setAirport: (position: LatLngLiteral) => void;
 };

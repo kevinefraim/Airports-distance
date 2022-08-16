@@ -1,4 +1,4 @@
-import { PlacesProps } from "types/props";
+import { AirportInputProps } from "types/props";
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng
@@ -12,7 +12,7 @@ import {
   ComboboxPopover
 } from "@reach/combobox";
 
-const Places = ({ setAirport }: PlacesProps) => {
+const AirportInput = ({ setAirport }: AirportInputProps) => {
   const {
     value,
     setValue,
@@ -60,4 +60,4 @@ const Places = ({ setAirport }: PlacesProps) => {
   );
 };
 
-export default Places;
+export default AirportInput;

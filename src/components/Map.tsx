@@ -10,6 +10,7 @@ const Map = ({ firstAirport, secondAirport, mapRef, directions }: MapProps) => {
     () => ({
       disableDefaultUI: true,
       clickableIcons: false,
+      mapId: "d539158592125f62",
     }),
     []
   );
@@ -26,7 +27,7 @@ const Map = ({ firstAirport, secondAirport, mapRef, directions }: MapProps) => {
         <DirectionsRenderer
           directions={directions}
           options={{
-            polylineOptions: { strokeWeight: 5, strokeColor: "#1976D2" },
+            polylineOptions: { strokeWeight: 5, strokeColor: "#fff670" },
           }}
         />
       )}
