@@ -23,7 +23,8 @@ const Map = () => {
 
   const fetchDirections = () => {
     if (!firstAirport || !secondAirport) return;
-    const service = new google.maps.DirectionsService();
+    const service: google.maps.DirectionsService =
+      new google.maps.DirectionsService();
     service.route(
       {
         origin: firstAirport,
@@ -39,9 +40,6 @@ const Map = () => {
   };
 
   const handleReset = () => {
-    setFirstAirport(null);
-    setSecondAirport(null);
-    setDirections(null);
     window.location.reload();
   };
 
@@ -69,7 +67,6 @@ const Map = () => {
         />
         <Button
           onClick={fetchDirections}
-          id="btn"
           variant="contained"
           sx={{ height: "fit-content" }}
         >
@@ -99,7 +96,6 @@ const Map = () => {
         </GoogleMap>
       </Box>
       <Button
-        id="resetBtn"
         variant="outlined"
         onClick={handleReset}
         sx={{ height: "fit-content", width: "fit-content", margin: "0 auto" }}
