@@ -12,7 +12,7 @@ const Distance = ({ leg }: DistanceProps) => {
 
   return (
     <Box className="p-2 rounded-md w-[fit-content]">
-      <Typography variant="h6" className="font-mono">
+      <Typography variant="h6" className="font-sans">
         Distance: {nauticalMiles} NMI.
       </Typography>
     </Box>
