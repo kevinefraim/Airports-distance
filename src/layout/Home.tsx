@@ -1,6 +1,6 @@
 /*Only App view */
 
-import MainContainer from "./MainContainer";
+import MainContainer from "../components/MainContainer";
 
 const Home = () => {
   return (

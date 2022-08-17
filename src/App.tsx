@@ -1,6 +1,6 @@
-import Header from "components/Header";
-import Home from "components/Home";
 import Loader from "components/Loader";
+import Header from "layout/Header";
+import Home from "layout/Home";
 import { useEffect, useState } from "react";
 
 function App() {
