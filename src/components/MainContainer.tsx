@@ -45,8 +45,6 @@ const MainContainer = () => {
 
   const setDirectionsToRender = (): void => {
     if (!firstAirport || !secondAirport) return setErrors(true);
-    if (!firstAirport) return setErrors(true);
-    if (!secondAirport) return setErrors(true);
 
     const service: google.maps.DirectionsService =
       new google.maps.DirectionsService();

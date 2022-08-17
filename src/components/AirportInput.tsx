@@ -42,30 +42,17 @@ const AirportInput = ({ setAirport }: AirportInputProps) => {
     const { lat, lng } = getLatLng(results[0]);
     setAirport({ lat, lng });
   };
-  const handleClear = (): void => {
-    setValue("", false);
-    clearSuggestions();
-  };
 
   return (
     <>
       {ready && (
         <Combobox onSelect={handleSelect}>
-          <div className="flex items-center gap-2">
-            <ComboboxInput
-              className="w-[100%] p-[0.5rem] shadow-lg border-2 border-gray-100 rounded-md"
-              value={value}
-              onChange={({ target }) => setValue(target.value)}
-              placeholder="Search airports"
-            />
-            <IconButton
-              onClick={handleClear}
-              className="bg-red-600 rounded-full text-white"
-              color="error"
-            >
-              <ClearIcon />
-            </IconButton>
-          </div>
+          <ComboboxInput
+            className="w-[100%] p-[0.5rem] shadow-lg border-2 border-gray-100 rounded-md"
+            value={value}
+            onChange={({ target }) => setValue(target.value)}
+            placeholder="Search airports"
+          />
 
           <ComboboxPopover>
             <ComboboxList>
