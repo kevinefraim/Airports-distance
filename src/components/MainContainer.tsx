@@ -27,7 +27,15 @@ const MainContainer = () => {
   const [errors, setErrors] = useState<boolean>(false);
   const [map, setMap] = useState<GoogleMap | null>();
 
-  const handleUnmount = useCallback((map: GoogleMap) => {
+  useEffect(() => {
+    if (errors) {
+      setTimeout(() => {
+        setErrors(false);
+      }, 3500);
+    }
+  }, [errors]);
+
+  const resetForm = useCallback((map: GoogleMap) => {
     setActiveMap(false);
     setFirstAirport(null);
     setSecondAirport(null);
@@ -54,14 +62,6 @@ const MainContainer = () => {
     );
   };
 
-  useEffect(() => {
-    if (errors) {
-      setTimeout(() => {
-        setErrors(false);
-      }, 3500);
-    }
-  }, [errors]);
-
   return (
     <>
       {isLoaded && activeMap ? (
@@ -84,15 +84,14 @@ const MainContainer = () => {
               mapRef={map!}
               setDirectionsToRender={setDirectionsToRender}
               directions={directions}
-              onUnmount={handleUnmount}
+              onUnmount={resetForm}
             />
             <Box className="h-[100%] w-[100%] flex justify-center">
               <Map
                 firstAirport={firstAirport}
                 secondAirport={secondAirport}
-                mapRef={map!}
                 directions={directions}
-                onUnmount={handleUnmount}
+                onUnmount={resetForm}
                 setMap={setMap}
               />
             </Box>

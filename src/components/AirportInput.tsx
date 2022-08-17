@@ -20,6 +20,7 @@ import {
 
 const AirportInput = ({ setAirport }: AirportInputProps) => {
   const {
+    ready,
     value,
     setValue,
     suggestions: { status, data },
@@ -47,36 +48,40 @@ const AirportInput = ({ setAirport }: AirportInputProps) => {
   };
 
   return (
-    <Combobox onSelect={handleSelect}>
-      <div className="flex items-center gap-2">
-        <ComboboxInput
-          className="w-[100%] p-[0.5rem] shadow-lg border-2 border-gray-100 rounded-md"
-          value={value}
-          onChange={({ target }) => setValue(target.value)}
-          placeholder="Search airports"
-        />
-        <IconButton
-          onClick={handleClear}
-          className="bg-red-600 rounded-full text-white"
-          color="error"
-        >
-          <ClearIcon />
-        </IconButton>
-      </div>
+    <>
+      {ready && (
+        <Combobox onSelect={handleSelect}>
+          <div className="flex items-center gap-2">
+            <ComboboxInput
+              className="w-[100%] p-[0.5rem] shadow-lg border-2 border-gray-100 rounded-md"
+              value={value}
+              onChange={({ target }) => setValue(target.value)}
+              placeholder="Search airports"
+            />
+            <IconButton
+              onClick={handleClear}
+              className="bg-red-600 rounded-full text-white"
+              color="error"
+            >
+              <ClearIcon />
+            </IconButton>
+          </div>
 
-      <ComboboxPopover>
-        <ComboboxList>
-          {status === "OK" &&
-            data.map(({ place_id, description }) => (
-              <ComboboxOption
-                className="hover:bg-slate-200"
-                key={place_id}
-                value={description}
-              />
-            ))}
-        </ComboboxList>
-      </ComboboxPopover>
-    </Combobox>
+          <ComboboxPopover>
+            <ComboboxList>
+              {status === "OK" &&
+                data.map(({ place_id, description }) => (
+                  <ComboboxOption
+                    className="hover:bg-slate-200"
+                    key={place_id}
+                    value={description}
+                  />
+                ))}
+            </ComboboxList>
+          </ComboboxPopover>
+        </Combobox>
+      )}
+    </>
   );
 };
 

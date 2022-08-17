@@ -20,7 +20,6 @@ export type DistanceProps = {
 export type MapProps = {
   firstAirport: LatLngLiteral | null;
   secondAirport: LatLngLiteral | null;
-  mapRef: GoogleMap | null;
   directions: DirectionsResult | null;
   onUnmount: (map: any) => void;
   setMap: (map: GoogleMap) => void;

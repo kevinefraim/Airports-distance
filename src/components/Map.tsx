@@ -1,7 +1,7 @@
 /* google maps component */
 /* Using directions prop in DIrectionsRenderer component to display the driving route between the two points */
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useMemo } from "react";
 import { LatLngLiteral, MapOptions } from "types/maps";
 import { MapProps } from "types/props";
 
@@ -10,7 +10,6 @@ import { DirectionsRenderer, GoogleMap, Marker } from "@react-google-maps/api";
 const Map = ({
   firstAirport,
   secondAirport,
-  mapRef,
   directions,
   onUnmount,
   setMap,

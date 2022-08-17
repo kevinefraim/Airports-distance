@@ -18,11 +18,9 @@ const AirportsForm = ({
   directions,
   onUnmount,
 }: AirportsFormProps) => {
-  const [canReset, setCanReset] = useState<boolean>(false);
   const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>): void => {
     e.preventDefault();
     setDirectionsToRender();
-    setCanReset(true);
   };
   return (
     <form
@@ -49,12 +47,7 @@ const AirportsForm = ({
       >
         View Distance
       </Button>
-      <Button
-        disabled={!canReset}
-        variant="contained"
-        className="h-fit"
-        onClick={onUnmount}
-      >
+      <Button variant="contained" className="h-fit" onClick={onUnmount}>
         Reset
       </Button>
       {directions && <Distance leg={directions.routes[0].legs[0]} />}
