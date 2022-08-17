@@ -8,6 +8,7 @@ export type AirportsFormProps = {
   mapRef: any;
   fetchDirections: (e: React.ChangeEvent<HTMLFormElement>) => void;
   directions: DirectionsResult | null;
+  onUnmount: (map: any) => void;
 };
 
 export type DistanceProps = {
@@ -19,6 +20,7 @@ export type MapProps = {
   secondAirport: LatLngLiteral | null;
   mapRef: any;
   directions: DirectionsResult | null;
+  onUnmount: (map: any) => void;
 };
 
 export type AirportInputProps = {

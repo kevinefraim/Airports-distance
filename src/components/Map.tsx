@@ -1,13 +1,20 @@
 /* google maps component */
 /* Using directions prop in DIrectionsRenderer component to display the driving route between the two points */
 
-import { useCallback, useMemo } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { LatLngLiteral, MapOptions } from "types/maps";
 import { MapProps } from "types/props";
 
 import { DirectionsRenderer, GoogleMap, Marker } from "@react-google-maps/api";
 
-const Map = ({ firstAirport, secondAirport, mapRef, directions }: MapProps) => {
+const Map = ({
+  firstAirport,
+  secondAirport,
+  mapRef,
+  directions,
+  onUnmount,
+}: MapProps) => {
+  const [map, setMap] = useState<GoogleMap | null>();
   const center = useMemo<LatLngLiteral>(
     () => ({ lat: 40.74819, lng: -73.986726 }),
     []
@@ -19,11 +26,12 @@ const Map = ({ firstAirport, secondAirport, mapRef, directions }: MapProps) => {
     }),
     []
   );
-  const onLoad = useCallback((map: any) => (mapRef.current = map), [mapRef]);
+  const onLoad = useCallback((map: any) => setMap(map), []);
   return (
     <GoogleMap
       zoom={12}
       center={center}
+      onUnmount={onUnmount}
       mapContainerClassName="h-[100%] w-[100%]"
       options={mapOptions}
       onLoad={onLoad}

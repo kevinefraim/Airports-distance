@@ -16,6 +16,7 @@ const AirportsForm = ({
   mapRef,
   fetchDirections,
   directions,
+  onUnmount,
 }: AirportsFormProps) => {
   return (
     <form
@@ -34,7 +35,6 @@ const AirportsForm = ({
           mapRef.current?.panTo(position);
         }}
       />
-
       <Button
         variant="contained"
         type="submit"
@@ -43,7 +43,9 @@ const AirportsForm = ({
       >
         View Distance
       </Button>
-
+      <Button variant="contained" className="h-fit" onClick={onUnmount}>
+        Reset
+      </Button>
       {directions && <Distance leg={directions.routes[0].legs[0]} />}
     </form>
   );
