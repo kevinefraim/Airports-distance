@@ -3,15 +3,15 @@
 /* Using google.maps.TravelMode.DRIVING beeing the best options that I found,
 check this in: https://developers.google.com/maps/documentation/javascript/directions#TravelModes  */
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { DirectionsResult, LatLngLiteral } from "types/maps";
 
 import { Box, Paper } from "@mui/material";
 import { GoogleMap, useLoadScript } from "@react-google-maps/api";
 
 import AirportsForm from "./AirportsForm";
-import Map from "./Map";
 import Loader from "./Loader";
+import Map from "./Map";
 
 const MainContainer = () => {
   const { isLoaded } = useLoadScript({
