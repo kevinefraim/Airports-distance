@@ -14,13 +14,19 @@ const AirportsForm = ({
   setFirstAirport,
   setSecondAirport,
   mapRef,
-  fetchDirections,
+  setDirectionsToRender,
   directions,
   onUnmount,
 }: AirportsFormProps) => {
+  const [canReset, setCanReset] = useState<boolean>(false);
+  const handleSubmit = (e: React.ChangeEvent<HTMLFormElement>): void => {
+    e.preventDefault();
+    setDirectionsToRender();
+    setCanReset(true);
+  };
   return (
     <form
-      onSubmit={fetchDirections}
+      onSubmit={handleSubmit}
       className="flex flex-col md:flex-row md:items-center gap-8  w-full justify-center"
     >
       <AirportInput
@@ -43,7 +49,12 @@ const AirportsForm = ({
       >
         View Distance
       </Button>
-      <Button variant="contained" className="h-fit" onClick={onUnmount}>
+      <Button
+        disabled={!canReset}
+        variant="contained"
+        className="h-fit"
+        onClick={onUnmount}
+      >
         Reset
       </Button>
       {directions && <Distance leg={directions.routes[0].legs[0]} />}

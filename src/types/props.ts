@@ -1,13 +1,14 @@
 /* Component props types file */
 
 import { GoogleMap } from "@react-google-maps/api";
+
 import { DirectionsResult, LatLngLiteral } from "./maps";
 
 export type AirportsFormProps = {
   setFirstAirport: (position: LatLngLiteral | null) => void;
   setSecondAirport: (position: LatLngLiteral | null) => void;
   mapRef: GoogleMap | null;
-  fetchDirections: (e: React.ChangeEvent<HTMLFormElement>) => void;
+  setDirectionsToRender: () => void;
   directions: DirectionsResult | null;
   onUnmount: (map: any) => void;
 };

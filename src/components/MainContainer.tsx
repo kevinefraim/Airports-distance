@@ -1,5 +1,5 @@
 /* Main container component - contains map and form components */
-/* fetchDirections function sets the directions and pass it to the Map component */
+/* setDirectionsToRender function sets the directions and pass it to the Map component */
 /* Using google.maps.TravelMode.DRIVING beeing the best options that I found,
 check this in: https://developers.google.com/maps/documentation/javascript/directions#TravelModes  */
 
@@ -35,9 +35,7 @@ const MainContainer = () => {
     setTimeout(() => setActiveMap(true), 200);
   }, []);
 
-  const fetchDirections = (e: React.ChangeEvent<HTMLFormElement>): void => {
-    e.preventDefault();
-
+  const setDirectionsToRender = (): void => {
     if (!firstAirport || !secondAirport) return setErrors(true);
     if (!firstAirport) return setErrors(true);
     if (!secondAirport) return setErrors(true);
@@ -60,7 +58,7 @@ const MainContainer = () => {
     if (errors) {
       setTimeout(() => {
         setErrors(false);
-      }, 5000);
+      }, 3500);
     }
   }, [errors]);
 
@@ -84,7 +82,7 @@ const MainContainer = () => {
               setFirstAirport={setFirstAirport}
               setSecondAirport={setSecondAirport}
               mapRef={map!}
-              fetchDirections={fetchDirections}
+              setDirectionsToRender={setDirectionsToRender}
               directions={directions}
               onUnmount={handleUnmount}
             />
