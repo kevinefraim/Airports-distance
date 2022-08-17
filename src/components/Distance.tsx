@@ -1,7 +1,7 @@
 /* Component that renders the nautical miles distance between the two airports */
 
 import { DistanceProps } from "types/props";
-import { formatMiles } from "utils/helpers";
+import { formatToNauticalMiles } from "utils/helpers";
 
 import { Box, Typography } from "@mui/material";
 
@@ -10,7 +10,7 @@ const Distance = ({ leg }: DistanceProps) => {
   const {
     distance: { text },
   } = leg;
-  const nauticalMiles: number = formatMiles(text);
+  const nauticalMiles: number = formatToNauticalMiles(text);
 
   return (
     <Box className="p-2 rounded-md w-[fit-content]">
