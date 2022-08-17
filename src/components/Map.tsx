@@ -13,8 +13,8 @@ const Map = ({
   mapRef,
   directions,
   onUnmount,
+  setMap,
 }: MapProps) => {
-  const [map, setMap] = useState<GoogleMap | null>();
   const center = useMemo<LatLngLiteral>(
     () => ({ lat: 40.74819, lng: -73.986726 }),
     []

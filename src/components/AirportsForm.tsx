@@ -26,13 +26,13 @@ const AirportsForm = ({
       <AirportInput
         setAirport={(position: LatLngLiteral): void => {
           setFirstAirport(position);
-          mapRef.current?.panTo(position);
+          mapRef?.panTo(position);
         }}
       />
       <AirportInput
         setAirport={(position: LatLngLiteral): void => {
           setSecondAirport(position);
-          mapRef.current?.panTo(position);
+          mapRef?.panTo(position);
         }}
       />
       <Button

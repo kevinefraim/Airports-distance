@@ -25,14 +25,14 @@ const MainContainer = () => {
   const [activeMap, setActiveMap] = useState<boolean>(true);
   const [directions, setDirections] = useState<DirectionsResult | null>(null);
   const [errors, setErrors] = useState<boolean>(false);
-  const mapRef = useRef<GoogleMap>();
+  const [map, setMap] = useState<GoogleMap | null>();
 
-  const handleUnmount = useCallback((map: any) => {
+  const handleUnmount = useCallback((map: GoogleMap) => {
     setActiveMap(false);
     setFirstAirport(null);
     setSecondAirport(null);
     setDirections(null);
-    setTimeout(() => setActiveMap(true), 300);
+    setTimeout(() => setActiveMap(true), 200);
   }, []);
 
   const fetchDirections = (e: React.ChangeEvent<HTMLFormElement>): void => {
@@ -83,7 +83,7 @@ const MainContainer = () => {
             <AirportsForm
               setFirstAirport={setFirstAirport}
               setSecondAirport={setSecondAirport}
-              mapRef={mapRef}
+              mapRef={map!}
               fetchDirections={fetchDirections}
               directions={directions}
               onUnmount={handleUnmount}
@@ -92,9 +92,10 @@ const MainContainer = () => {
               <Map
                 firstAirport={firstAirport}
                 secondAirport={secondAirport}
-                mapRef={mapRef}
+                mapRef={map!}
                 directions={directions}
                 onUnmount={handleUnmount}
+                setMap={setMap}
               />
             </Box>
           </Box>
